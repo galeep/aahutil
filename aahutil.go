@@ -5,6 +5,7 @@ import (
     "fmt"
     "os"
     "strings"
+    "runtime"
 )
 
 func spew(stuff string, rounds int) { 
@@ -27,30 +28,13 @@ func main() {
     xNumPtr := flag.Int("xn", 1, "extra int")
     nlPtr := flag.Bool("n", true, "a bool")
     
-    // This doesn't seem to work... 
+    // This doesn't seem to work.
     // This should be incompatible with most other flags
     // and just toupper the string
     tuPtr := flag.String("u", "", "extra string")
-    //var svar string
-    //flag.StringVar(&svar, "svar", "bar", "a string var")
-
+    
     flag.Parse()
-
-    //fmt.Println("aaa:", *aaaPtr)
-    //fmt.Println("hhh:", *hhhPtr)
-    //fmt.Println("aNum:", *aNumPtr)
-    //fmt.Println("hNum:", *hNumPtr)
-    //fmt.Println("tail:", flag.Args())
-
-    //fmt.Println("svar:", svar)
-    //fmt.Println("tail:", flag.Args())
-
-    //for i := 0; i < *numbPtr; i++ { 
-     //   fmt.Printf("%s", svar)
-    // }
-    // for i := 0; i < *numb2Ptr; i++ {
-    //    fmt.Printf("%s", *wordPtr)
-    // }
+    
     justcase := len(strings.TrimSpace(*tuPtr))
     if justcase > 1 {
         tu(*tuPtr)
@@ -62,11 +46,11 @@ func main() {
     spew(*aaaPtr, *aNumPtr)
     spew(*hhhPtr, *hNumPtr)
     
-    // de bug 
-    dafuq := len(strings.TrimSpace(*xtraPtr))    
+    // Still quirky
+    wat := len(strings.TrimSpace(*xtraPtr))    
 
     //if len(strings.TrimSpace(*xtraPtr)) < 1 {
-    if dafuq > 1 {
+    if wat > 1 {
         spew(*xtraPtr, *xNumPtr)
     }
 
